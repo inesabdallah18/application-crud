@@ -1,0 +1,41 @@
+{% extends 'base.html.twig' %}
+{% block title%} Liste des Employes{% endblock %}
+
+{% block body %}
+ {% if employes %}
+ 
+    <table id="employes" class="table table-striped">
+      <thead>
+        <tr>
+          <th>Employe</th>
+        
+        </tr>
+      </thead>
+      <tbody>
+        {% for employe in employes %}
+          <tr>
+            <td>{{ employe.nom }}</td>
+          </tr>
+             <td>
+              <a href="/article/{{ employe.id }}" class="btn btn-danger">Détails</a>
+              <a href="/article/edit/{{ employe.id }}" class="btn btn-outline-secondary">Modifier</a>
+              <a href="/article/delete/{{ employe.id }}" class="btn btn-danger" onclick="return confirm('Etes-vous sûr de supprimer cet employe?');">Supprimer</a>
+            </td>
+          </tr>
+        {% endfor %}
+      </tbody>
+    </table>
+
+    <section>
+ <div   class="container-fluid" style="width : 100% ; height:660px ; background-attachement:fixed ; 
+ background-image: url(/img/ooredoo.JPG) ;background-size:100%  90% ; background-repeat:no-repeat ; background-position:cover;
+ overflow:hidden:">
+
+</div>
+</section>
+
+
+  {% else %}
+    <p>Aucun Employe</p>
+  {% endif %} 
+{% endblock %}
